@@ -29,16 +29,16 @@
     </button>
     <nav>
       <ul>
-        <li><a class="index" href="#" title="首頁">首頁</a></li>
-        <li><a href="#" title="關於我們">關於我們</a></li>
-        <li><a href="#" title="會員登入">會員登入</a></li>
-        <li><a href="#" title="聯絡我們">聯絡我們</a></li>
+        <li><a class="index" href="#home" title="首頁">首頁</a></li>
+        <li><a href="#about" title="關於我們">關於我們</a></li>
+        <li><a href="#" class="login-btn" title="會員登入">會員登入</a></li>
+        <li><a href="#contact" title="聯絡我們">聯絡我們</a></li>
       </ul>
     </nav>
   </header>
   <!-- image part of the first page -->
   <main>
-    <section class="backimage">
+    <section class="backimage" id="home">
       <div class="filter"></div>
       <h3>
         準備好享受沖繩熱情了嗎?<br />
@@ -55,7 +55,7 @@
       <section class="cards">
         <div class="card">
           <div class="image-container">
-            <img src="./assets/images/pictures/T11.JPG" alt="" />
+            <img src="./assets/images/pictures/T11.jpg" alt="" />
           </div>
 
           <h4>快速運送</h4>
@@ -90,7 +90,60 @@
         </div>
       </section>
     </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <h2>關於我們</h2>
+      <div class="container">
+        <p>
+          沖繩旅遊租借服務致力於為遊客提供最便利的旅遊體驗。
+          無論是還沒準備好裝備的衝浪客，還是需要交通工具的家庭，我們都能滿足您的需求。
+          我們的團隊由熱愛沖繩的在地嚮導組成，隨時準備為您提供最貼心的建議與協助。
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>聯絡我們</h2>
+      <div class="container">
+        <form action="">
+          <div class="input-group">
+            <label for="name">姓名</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="input-group">
+            <label for="email">電子信箱</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="input-group">
+            <label for="message">訊息內容</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit">發送訊息</button>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <!-- Login Modal -->
+  <dialog id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>會員登入</h2>
+      <form action="">
+        <div class="input-group">
+          <label for="username">使用者名稱 / Email</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="input-group">
+          <label for="password">密碼</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">登入</button>
+      </form>
+    </div>
+  </dialog>
   <footer>
     <div class="hh">
       <img src="./assets/images/icons/black okinawa.svg" alt="logo" />
