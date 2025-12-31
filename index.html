@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="icon" href="./assets/images/icons/black-okinawa.svg" type="image/svg+xml">
 </head>
 
 <body>
@@ -33,6 +34,9 @@
         <li><a href="#about" title="關於我們">關於我們</a></li>
         <li><a href="#" class="login-btn" title="會員登入">會員登入</a></li>
         <li><a href="#contact" title="聯絡我們">聯絡我們</a></li>
+        <li><a href="#" class="cart-btn" title="購物車"><img
+              src="./assets/images/icons/reshot-icon-shopping-cart-TSH5WN4J9B.svg" alt="購物車" class="cart-icon"><span
+              class="cart-count">0</span></a></li>
       </ul>
     </nav>
   </header>
@@ -83,10 +87,9 @@
 
           <h4>種類多樣</h4>
           <p>
-            超過3000樣商品都可以租借，商品均通過品質篩檢，保護您
-            到的商品絕對滿意。
+            超過3000樣商品都可以租借，商品均通過品質篩檢，保證您的商品絕對滿意。
           </p>
-          <a href="#">線上搜尋</a>
+          <a href="#" class="search-btn">線上搜尋</a>
         </div>
       </section>
     </section>
@@ -144,9 +147,92 @@
       </form>
     </div>
   </dialog>
+
+  <!-- Service Items Modal -->
+  <dialog id="service-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2 id="service-title">服務項目搜尋</h2>
+      <div id="search-container">
+        <input type="text" id="service-search" placeholder="搜尋服務...">
+      </div>
+      <ul class="service-list">
+        <li data-popular="true" data-price="500">
+          <span class="name">衝浪板 (Surfboard)</span>
+          <span class="price">$500/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-price="800">
+          <span class="name">立式划槳 (SUP)</span>
+          <span class="price">$800/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-price="1200">
+          <span class="name">潛水裝備 (Diving Gear)</span>
+          <span class="price">$1200/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-popular="true" data-price="2000">
+          <span class="name">租車服務 (Car Rental)</span>
+          <span class="price">$2000/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-price="800">
+          <span class="name">機車出租 (Scooter)</span>
+          <span class="price">$800/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-price="300">
+          <span class="name">自行車 (Bicycle)</span>
+          <span class="price">$300/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-price="600">
+          <span class="name">帳篷 (Tent)</span>
+          <span class="price">$600/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-price="200">
+          <span class="name">睡袋 (Sleeping Bag)</span>
+          <span class="price">$200/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-price="500">
+          <span class="name">烤肉用具 (BBQ Set)</span>
+          <span class="price">$500/組</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-popular="true" data-price="150">
+          <span class="name">WiFi分享器 (WiFi Router)</span>
+          <span class="price">$150/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+        <li data-price="100">
+          <span class="name">行動電源 (Power Bank)</span>
+          <span class="price">$100/日</span>
+          <button class="add-to-cart">加入</button>
+        </li>
+      </ul>
+    </div>
+  </dialog>
+
+  <!-- Cart Modal -->
+  <dialog id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>您的購物車</h2>
+      <ul class="cart-list">
+        <!-- Cart items will be injected here -->
+      </ul>
+      <div class="cart-total">
+        總金額: $<span id="total-price">0</span>
+      </div>
+      <button class="checkout-btn">前往結帳</button>
+    </div>
+  </dialog>
   <footer>
     <div class="hh">
-      <img src="./assets/images/icons/black okinawa.svg" alt="logo" />
+      <img src="./assets/images/icons/black-okinawa.svg" alt="logo" />
       <h1>沖繩旅遊租借服務</h1>
     </div>
     <nav>
