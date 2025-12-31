@@ -5,6 +5,30 @@
   font-family: "Noto Sans TC", sans-serif;
 }
 
+.hidden {
+  display: none !important;
+}
+
+/* Toast Notification Styles */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 99999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -28,49 +52,68 @@ header {
   background-color: rgb(255, 50, 50);
   box-shadow: 3px 3px 5px 1px rgb(133, 130, 130);
 }
-
 header div.logo {
   display: flex;
   align-items: center;
   flex: 5 1 400px;
   margin-left: 2rem;
 }
-
 header div.logo img {
   width: 6vw;
   height: 6vw;
 }
-
 header div.logo h1 {
   color: white;
 }
-
 header nav {
   flex: 2 1 400px;
 }
-
 header nav ul {
   display: flex;
   list-style-type: none;
   justify-content: space-around;
 }
-
 header nav ul li {
   padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 header nav ul li a {
   color: #ffffff;
   text-decoration: none;
   font-size: 1.35rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 2px 5px;
 }
-
+header nav ul li a .cart-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: invert(1);
+  transition: filter 0.3s ease-in;
+}
+header nav ul li a .cart-count {
+  background-color: white;
+  color: rgb(255, 50, 50);
+  border-radius: 50%;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-left: 5px;
+}
 header nav ul li a:hover {
   background-color: white;
   color: rgb(255, 50, 50);
   transition: all 0.3s ease-in;
 }
-
+header nav ul li a:hover .cart-icon {
+  /* Filter to turn black to #FF3232 (approx rgb(255, 50, 50)) */
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(330deg) brightness(95%) contrast(103%);
+}
 header button.toggle {
   display: none;
 }
@@ -84,26 +127,18 @@ main section.backimage {
   position: relative;
   z-index: 0;
   scroll-margin-top: 10vh;
-  background-image: url(../images/pictures/T03.jpg);
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  z-index: 0;
-  scroll-margin-top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
 }
-
 main section.backimage h3 {
   font-size: 3.5rem;
   color: white;
   margin: 2rem 0rem;
   text-shadow: #000 5px 5px 5px;
 }
-
 main section.backimage button.start {
   background-color: rgb(255, 50, 50);
   padding: 0.75rem 1rem;
@@ -113,7 +148,6 @@ main section.backimage button.start {
   border-radius: 1rem;
   cursor: pointer;
 }
-
 main section.backimage div.filter {
   background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
@@ -122,26 +156,22 @@ main section.backimage div.filter {
   top: 0;
   z-index: -1;
 }
-
 main section.second {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-
 main section.second h2 {
   font-size: 2rem;
   margin: 2rem 1rem;
 }
-
 main section.second section.cards {
   display: flex;
   width: 80%;
   min-height: 80vh;
   flex-wrap: wrap;
 }
-
 main section.second section.cards div.card {
   display: flex;
   flex-direction: column;
@@ -150,34 +180,28 @@ main section.second section.cards div.card {
   padding: 1rem;
   flex: 1 1 300px;
 }
-
 main section.second section.cards div.card div.image-container {
   overflow: hidden;
   width: 15vw;
   height: 15vw;
   border-radius: 50%;
 }
-
 main section.second section.cards div.card div.image-container img {
   width: 15vw;
   height: 15vw;
   border-radius: 50%;
   transition: all 0.2s;
 }
-
 main section.second section.cards div.card div.image-container img:hover {
   transform: scale(1.2);
 }
-
 main section.second section.cards div.card h4 {
   font-size: 2rem;
   margin: 1rem 0rem;
 }
-
 main section.second section.cards div.card p {
   font-size: 1.23rem;
 }
-
 main section.second section.cards div.card a {
   margin: 1rem 0rem;
   text-decoration: none;
@@ -187,7 +211,6 @@ main section.second section.cards div.card a {
   border-radius: 0.5rem;
   font-size: 1.25rem;
 }
-
 main section.about,
 main section.contact {
   display: flex;
@@ -197,25 +220,21 @@ main section.contact {
   text-align: center;
   scroll-margin-top: 10vh;
 }
-
 main section.about h2,
 main section.contact h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
 }
-
 main section.about .container,
 main section.contact .container {
   width: 80%;
   max-width: 800px;
 }
-
 main section.about .container p,
 main section.contact .container p {
   font-size: 1.25rem;
   line-height: 1.6;
 }
-
 main section.about .container form,
 main section.contact .container form {
   display: flex;
@@ -223,21 +242,18 @@ main section.contact .container form {
   align-items: center;
   width: 100%;
 }
-
 main section.about .container form .input-group,
 main section.contact .container form .input-group {
   width: 100%;
   margin-bottom: 1.5rem;
   text-align: left;
 }
-
 main section.about .container form .input-group label,
 main section.contact .container form .input-group label {
   display: block;
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
 }
-
 main section.about .container form .input-group input,
 main section.about .container form .input-group textarea,
 main section.contact .container form .input-group input,
@@ -248,7 +264,6 @@ main section.contact .container form .input-group textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 main section.about .container form button,
 main section.contact .container form button {
   background-color: rgb(255, 50, 50);
@@ -260,12 +275,10 @@ main section.contact .container form button {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 main section.about .container form button:hover,
 main section.contact .container form button:hover {
   background-color: rgb(200, 40, 40);
 }
-
 main section.about {
   background-color: #f9f9f9;
 }
@@ -280,16 +293,14 @@ dialog.modal {
   margin: auto;
   position: fixed;
 }
-
 dialog.modal::backdrop {
   background-color: rgba(0, 0, 0, 0.6);
 }
-
 dialog.modal .modal-content {
   padding: 2rem;
   position: relative;
+  /* Cart Modal Specifics */
 }
-
 dialog.modal .modal-content .close-btn {
   position: absolute;
   top: 10px;
@@ -297,34 +308,28 @@ dialog.modal .modal-content .close-btn {
   font-size: 1.5rem;
   cursor: pointer;
 }
-
 dialog.modal .modal-content h2 {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
 }
-
 dialog.modal .modal-content form {
   display: flex;
   flex-direction: column;
 }
-
 dialog.modal .modal-content form .input-group {
   margin-bottom: 1rem;
 }
-
 dialog.modal .modal-content form .input-group label {
   display: block;
   margin-bottom: 0.5rem;
 }
-
 dialog.modal .modal-content form .input-group input {
   width: 100%;
   padding: 0.8rem;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 dialog.modal .modal-content form button {
   background-color: rgb(255, 50, 50);
   color: white;
@@ -336,8 +341,128 @@ dialog.modal .modal-content form button {
   margin-top: 1rem;
   transition: background-color 0.3s;
 }
-
 dialog.modal .modal-content form button:hover {
+  background-color: rgb(200, 40, 40);
+}
+dialog.modal .modal-content #search-container {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+dialog.modal .modal-content #search-container input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+dialog.modal .modal-content ul.service-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+dialog.modal .modal-content ul.service-list li {
+  padding: 0.8rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  /* Reset from center */
+  font-size: 1.1rem;
+  cursor: default;
+  /* Changed from pointer */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+dialog.modal .modal-content ul.service-list li:last-child {
+  border-bottom: none;
+}
+dialog.modal .modal-content ul.service-list li:hover {
+  background-color: #f9f9f9;
+}
+dialog.modal .modal-content ul.service-list li .name {
+  flex: 1;
+}
+dialog.modal .modal-content ul.service-list li .price {
+  font-weight: bold;
+  color: #555;
+  margin-right: 1rem;
+}
+dialog.modal .modal-content ul.service-list li .add-to-cart {
+  background-color: rgb(255, 50, 50);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  margin-top: 0;
+  /* Override default button margin */
+}
+dialog.modal .modal-content ul.service-list li .add-to-cart:hover {
+  background-color: rgb(200, 40, 40);
+}
+dialog.modal .modal-content ul.cart-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+dialog.modal .modal-content ul.cart-list li {
+  padding: 0.8rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+dialog.modal .modal-content ul.cart-list li .item-info {
+  display: flex;
+  flex-direction: column;
+}
+dialog.modal .modal-content ul.cart-list li .item-info .item-name {
+  font-size: 1.1rem;
+}
+dialog.modal .modal-content ul.cart-list li .item-info .item-price {
+  font-size: 0.9rem;
+  color: #666;
+}
+dialog.modal .modal-content ul.cart-list li .remove-btn {
+  background-color: rgb(255, 50, 50);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+  /* Reset circular style */
+  width: auto;
+  height: auto;
+  line-height: normal;
+}
+dialog.modal .modal-content ul.cart-list li .remove-btn:hover {
+  background-color: rgb(200, 40, 40);
+}
+dialog.modal .modal-content .cart-total {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: right;
+  margin: 1.5rem 0;
+  border-top: 2px solid #333;
+  padding-top: 1rem;
+}
+dialog.modal .modal-content .checkout-btn {
+  width: 100%;
+  background-color: rgb(255, 50, 50);
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+dialog.modal .modal-content .checkout-btn:hover {
   background-color: rgb(200, 40, 40);
 }
 
@@ -350,21 +475,17 @@ footer {
   min-height: 40vh;
   justify-content: space-around;
 }
-
 footer div.hh {
   display: flex;
   align-items: center;
 }
-
 footer div.hh img {
   width: 5vw;
   height: 5vw;
 }
-
 footer nav {
-  width: 30%;
+  width: 50%;
 }
-
 footer nav ul {
   display: flex;
   width: 100%;
@@ -372,22 +493,18 @@ footer nav ul {
   list-style-type: none;
   flex-wrap: wrap;
 }
-
 footer nav ul li {
   flex-basis: 100px;
 }
-
 footer nav ul li a {
   font-weight: 600;
   text-decoration: none;
   color: #000;
   font-size: 1.25rem;
 }
-
 footer div.socialmedia a {
   margin: 0rem 1rem;
 }
-
 footer div.socialmedia a img {
   width: 3vw;
   height: 3vw;
@@ -417,16 +534,13 @@ footer div.socialmedia a img {
   header div.logo {
     margin-left: 0.5rem;
   }
-
   header div.logo img {
     width: 15vw;
     height: 15vw;
   }
-
   header div.logo h1 {
     font-size: 1.95rem;
   }
-
   header button.toggle {
     display: flex;
     flex-direction: column;
@@ -439,7 +553,6 @@ footer div.socialmedia a img {
     margin-right: 2rem;
     z-index: 10;
   }
-
   header button.toggle span {
     display: block;
     width: 100%;
@@ -447,9 +560,7 @@ footer div.socialmedia a img {
     background-color: white;
     transition: all 0.3s ease;
   }
-
-  header button.toggle::before,
-  header button.toggle::after {
+  header button.toggle::before, header button.toggle::after {
     content: "";
     display: block;
     width: 100%;
@@ -457,72 +568,56 @@ footer div.socialmedia a img {
     background-color: white;
     transition: all 0.3s ease;
   }
-
   header button.toggle.active span {
     opacity: 0;
   }
-
   header button.toggle.active::before {
     transform: translateY(13px) rotate(45deg);
   }
-
   header button.toggle.active::after {
     transform: translateY(-13px) rotate(-45deg);
   }
-
   header nav {
     display: none;
     width: 100%;
   }
-
   header nav.active {
     display: block;
   }
-
   header nav ul {
     padding: 1rem;
     flex-direction: column;
     align-items: left;
     justify-content: left;
   }
-
   header nav ul li a {
     padding: 0 70% 1px 0;
   }
-
   header nav ul li a.index {
     padding-right: 80%;
   }
-
   main section.backimage h3 {
     font-size: 2rem;
   }
-
   main section.second h2 {
     font-size: 1.5rem;
   }
-
   main section.second section.cards div.card div.image-container {
     overflow: hidden;
     width: 50vw;
     height: 50vw;
     border-radius: 50%;
   }
-
   main section.second section.cards div.card div.image-container img {
     height: 50vw;
     width: 50vw;
   }
-
   footer div.hh img {
     width: 15vw;
     height: 15vw;
   }
-
   footer div.socialmedia a img {
     width: 8vw;
     height: 8vw;
   }
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
